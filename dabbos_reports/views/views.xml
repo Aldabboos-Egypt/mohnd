@@ -1,0 +1,71 @@
+<odoo>
+  <data>
+            <record model="report.paperformat" id="general_format_reports">
+            <field name="name">General Format</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_right">0</field>
+            <field name="margin_left">0</field>
+              <field name="margin_top">50</field>
+            <field name="margin_bottom">25</field>
+            <field name="header_spacing">50</field>
+             <field name="margin_top">40</field>
+            <field name="margin_bottom">30</field>
+            <field name="header_spacing">45</field>
+             <field name="dpi">90</field>
+
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">25</field>
+            <field name="header_spacing">50</field>
+             <field name="margin_top">40</field>
+            <field name="margin_bottom">30</field>
+            <field name="header_spacing">45</field>
+            <field name="dpi">90</field>
+         </record>
+
+
+            <record id="product_normal_form_view_discount" model="ir.ui.view">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <div name="options" position="inside">
+                    <div>
+                        <field name="is_discount"/>
+                        <label for="is_discount"/>
+                    </div>
+                </div>
+
+            </field>
+        </record>
+
+          <record id="product_uom_form_view_qtys" model="ir.ui.view">
+        <field name="name">uom.uom</field>
+        <field name="model">uom.uom</field>
+        <field name="inherit_id" ref="uom.product_uom_form_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='rounding']" position="after">
+              <field name="qty_type"/>
+            </xpath>
+
+        </field>
+    </record>
+
+           <record id="view_company_form_inherited" model="ir.ui.view">
+         <field name="name">res.company</field>
+         <field name="model">res.company</field>
+         <field name="inherit_id" ref="base.view_company_form"/>
+         <field name="arch" type="xml">
+
+             <xpath expr="//field[@name='currency_id']" position="after">
+             <field name="qrcode"/>
+             </xpath>
+
+         </field>
+     </record>
+  </data>
+</odoo>

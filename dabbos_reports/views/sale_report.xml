@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+   <template id="dabbos_custom_header_footer_sale">
+            <style type="text/css">
+                div.header
+                {
+                page-break-after: always;
+                page-break-inside: avoid;
+                border: 5px double !important;
+                }
+                .vl {
+                border-left: 6px solid green;
+                height: 500px;
+                }
+            </style>
+            <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name"
+                 t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-raw="0"/>
+            </div>
+
+            <div class="header" style="font-size:16px;font-family: 'cairo'">
+                <div class="header-en"
+                     style="float: left;  direction:ltr !important;                       width: 40%;                         text-align: left;color:black">
+                    <!--                    <h1 style="font-size:20px; font-weight:600; color:black;">شركة الدبوس للوكالات التجارية</h1>-->
+                    <!--                    <h1 style="font-size:14px; font-weight:600;  color:black;">بغداد جميلة الصناعية شارع الحسينية قرب-->
+                    <!--                        مجمع الوزران-->
+                    <!--                    </h1>-->
+
+                    <table style="width:100%;color:black; font-weight:600;font-size:14px;   ">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+
+
+                        <tr>
+                            <td class="text-right" style="padding: 5px;">
+                                <span t-field="doc.partner_id.name"/>
+                            </td>
+                            <td class="text-right" style="padding: 5px;">
+                                : اســم الزبـون
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right" style="padding: 5px;">
+                                <t t-if="doc.partner_id.street">
+                                    <span t-field="doc.partner_id.street"/>
+
+                                </t>
+                                <t t-if="doc.partner_id.street2">
+                                    ,
+                                    <span t-field="doc.partner_id.street2"/>
+                                </t>
+                                <t t-if="doc.partner_id.state_id">
+                                    ,
+                                    <span t-field="doc.partner_id.state_id.name"/>
+                                </t>
+                            </td>
+                            <td class="text-right" style="padding: 5px;">
+                                : الـعـنـوان
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right" style="padding: 5px;">
+                                <span style="margin:1px" t-field="doc.partner_id.phone"/>
+                            </td>
+                            <td class="text-right" style="padding: 5px;">
+                                : الـهـاتــف
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+                <div class="header-logo"
+                     style="float: left;   direction:ltr !important;                        width: 10%;                         text-align: center;">
+
+                    <div style="text-center;">
+                        <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)"
+                             style="height:135px;width:216px;" alt="Logo"/>
+                        <br/>
+                    </div>
+
+
+                </div>
+
+                <div class="header-ar"
+                     style="float: right;                   width: 40%;                         text-align: right; direction=rtl; color:black;">
+
+
+                                 <br/>
+
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    <h1 style="font-size:25px;margin-right:30px; font-weight:600; color:black;">امر بيع</h1>
+                    <table dir="rtl"
+                           style="text-align:right;width:100%;font-weight:600;font-size:14px  ;color:black;padding: 0px;">
+
+                        <tr>
+                            <td class="text-right" style="padding: 5px;">
+                                رقم الامر :
+                            </td>
+                            <td class="text-right">
+
+                                <span t-field="doc.name"/>
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-right" style="padding: 5px;">
+                                تاريخ الامر :
+                            </td>
+                            <td class="text-right">
+                                <span t-field="doc.date_order"/>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="text-right" style="padding: 5px;">
+                                اسم المندوب :
+                            </td>
+                            <td class="text-right">
+                                <span t-field="doc.user_id.name"/>
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="text-right" style="padding: 5px;">
+                                تلفون المندوب :
+                            </td>
+                            <td class="text-right">
+                                <span t-field="doc.user_id.phone"/>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+                </div>
+
+
+            </div>
+
+
+            <div class="footer" style="font-size:16px;font-family: 'cairo'">
+
+                <hr style="border-top: 1px solid black;"/>
+
+                <div class="row" style="width:100%">
+
+                    <div style="text-left;width:20%">
+                        <img t-if="doc.company_id.qrcode" t-att-src="image_data_uri(doc.company_id.qrcode)"
+                             style="height:100px;width:100px;" alt="Logo"/>
+                    </div>
+                    <div style="width:80%; "  dir="rtl" >
+                        <table style="width:100%;color:black; font-size:18px; " class="text-right">
+
+                            <tr>
+                                <td class="text-right">
+                                    <strong>
+                                        ﺷﺮﻛﺔ اﻟﺪﺑﻮس ﻟﻠﺘﺠﺎرة اﻟﻌﺎﻣﺔ اﻟﻤﺤﺪودة / ﺑﺒﻐﺪاد ﺟﻤﻴﻠﺔ
+                                    </strong>
+                                    <strong style="font-size:14px; ">
+                                        <br/>
+
+                                        <p>
+                                            أزهر : 07728860006 - مهند : 07835000307 - محمود : 07825080333 - انمار :
+                                            07825080444
+
+                                        </p>
+
+                                        <span t-esc="time.strftime('%Y-%m-%d')"/>
+
+                                        <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+                                        Page
+                                        <span class="page"/>
+                                        of
+                                        <span class="topage"/>
+
+                                    </strong>
+                                </td>
+                            </tr>
+
+
+                        </table>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </template>
+ <template id="dabbos_quotation_template_id">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.html_container">
+                    <t t-call="dabbos_reports.dabbos_custom_header_footer_sale">
+                        <br/>
+                        <br/>
+                        <t t-set="o" t-value="doc.with_context(lang=lang)"/>
+
+                        <style type="text/css">
+                            .table1 {
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                            }
+                            .table1 tr {
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                            }
+                            .table1 th {
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                            text-align:center;
+                            vertical-align:middle;
+                            }
+                            .table1 td {
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                            text-align:center;
+                            vertical-align:middle;
+                            }
+                            div.page1
+                            {
+                            page-break-after: always;
+                            page-break-inside: avoid;
+                            border: 5px double !important;
+                            }
+                            div.header
+                            {
+                            page-break-after: always;
+                            page-break-inside: avoid;
+                            border: 5px double !important;
+                            }
+                            .border {
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            border: 5px double;
+                            width: 100%;
+                            height: 100%;
+                            margin: 0;
+                            padding: 0;
+                            page-break-after: always;
+                            page-break-inside: avoid;
+                            box-sizing: border-box;
+                            }
+                            .vl {
+                            border-left: 6px solid green;
+                            height: 500px;
+                            }
+
+                        </style>
+                        <div class="page"
+                             style="direction: ltr;font-family: 'cairo', Times, serif;color: #292430;">
+
+                            <!--                        <br style="line-height:4px"/>-->
+                            <div style="width:100%;" class="text-center">
+                                <table style="width:90%;margin-left:5%;margin-right:5%;">
+                                    <tr>
+                                        <td style="width:50%;text-align:right;" class="text-right">
+                                            <table dir="rtl" style="text-align:right;width:100%;margin-right:0%;">
+
+
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <div style="width:100%;" class="text-center">
+
+                                <t t-set="current_subtotal" t-value="0"/>
+                                <t t-set="i" t-value="1"/>
+
+                                <t t-set="items_per_page" t-value="20"/>
+
+                                <!-- Split order_line into groups of 20 -->
+                                <t t-set="grouped_lines"
+                                   t-value="[doc.order_line[i:i+items_per_page] for i in range(0, len(doc.order_line), items_per_page)]"/>
+
+                                <tr t-foreach="grouped_lines" t-as="group">
+                                    <table style="width:100%; " class="table1" dir="rtl">
+
+
+                                        <thead>
+
+
+                                                <th style="width:5%;font-size: 14px;padding:5px">
+                                                    م
+                                                </th>
+
+
+                                                <th style="width:20%;font-size: 14px;">
+                                                    المادة
+                                                </th>
+
+                                                <th style="font-size: 14px;;width:5%">
+                                                    الكمية
+                                                </th>
+
+
+                                                <th style="font-size: 14px;;width:10%">
+                                                    السعر
+                                                </th>
+
+                                                <th style="font-size: 14px;;width:10%">
+                                                    وحدة القياس
+                                                </th>
+                                                <th style="font-size: 14px;;width:8%">
+                                                    الخصم
+                                                </th>
+                                                <th style="font-size: 14px;;width:12%">
+                                                    القيمة
+                                                </th>
+                                                <th style="font-size: 14px;;width:12%">
+                                                    الهدايا
+                                                </th>
+                                                <th style="font-size: 14px;;width:12%">
+                                                    ملاحظات
+                                                </th>
+
+                                        </thead>
+                                        <tbody>
+
+
+                                            <tr t-foreach="group" t-as="line">
+                                                <t t-if="line.product_id">
+
+
+                                                    <td style="padding:3px;font-size: 13px;height:35px" >
+                                                        <span t-esc="i"/>
+                                                    </td>
+
+
+                                                    <td style="font-size: 13px;">
+                                                        <span t-esc="line.product_id.name" />
+                                                    </td>
+
+                                                    <td style="font-size: 13px;">
+                                                        <span t-esc="int(line.product_uom_qty)"/>
+                                                    </td>
+
+                                                    <td style="font-size: 13px;">
+                                                        <span t-esc="int(line.price_unit)"/>
+                                                    </td>
+                                                    <td style="font-size: 13px;">
+                                                        <span t-esc="line.product_uom.name"/>
+                                                    </td>
+                                                    <td style="font-size: 13px;">
+                                                        <span t-esc="int(line.fixed_discount)"/>
+                                                    </td>
+                                                    <td style="font-size: 13px;">
+                                                        <span t-esc="int(line.price_subtotal)"/>
+                                                    </td>
+                                                    <td style="font-size: 13px;">
+                                                        <span t-esc="line.gift"/>
+                                                    </td>
+                                                    <td style="font-size: 13px;">
+                                                        <span t-esc="line.notes"/>
+                                                    </td>
+
+                                                    <t t-set="i" t-value="i+1"/>
+                                                    <t t-set="current_subtotal"
+                                                       t-value="current_subtotal + line.price_subtotal"/>
+                                                </t>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <t t-if="len(group)==20">
+                                                                                 <p style="page-break-before: always;"/>
+
+                                    </t>
+
+
+                                </tr>
+                                    <br/>
+                                <div class="summary" style="font-size:16px">
+                                    <div class="header-en"
+                                         style="float: left;    !important;                       width: 45%;                         color:black">
+
+                                        <table dir="rtl"
+                                               style="width:100%;color:black;padding: 0px;font-size:14px;border:1px solid   ">
+
+                                            <tr>
+
+
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    السائق
+
+                                                </td>
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    <span style="margin-right:3px" t-field="doc.driver_id.name"/>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+
+
+                                                <td style="border: 1px solid;padding:3px ">
+                                                    العدد الكلي للفاتورة
+
+                                                </td>
+                                                <td style="border: 1px solid;padding:3px ">
+                                                    <span style="margin-right:3px" t-field="doc.total_quantity"/>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+
+
+                                                <td style="border: 1px solid;padding:3px ">
+                                                    عدد الكراتين الكلي
+
+                                                </td>
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    <span style="margin-right:3px" t-field="doc.total_quantity_carton"/>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+
+
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    عدد البواكيت الكلي
+
+                                                </td>
+                                                <td style="border: 1px solid;padding:3px ">
+                                                    <span style="margin-right:3px" t-field="doc.total_quantity_packet"/>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+
+
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    ملاحظات
+
+                                                </td>
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    <span style="margin-right:3px" t-field="doc.general_notes"/>
+
+                                                </td>
+
+                                            </tr>
+
+                                        </table>
+                                    </div>
+
+                                    <div class="header-ar"
+                                         style="float: right;                   width: 45%;                        color:black;">
+                                        <table dir="rtl"
+                                               style="width:100%;color:black;padding: 0px;font-size:14px;border: 1px solid  "
+                                        >
+
+                                            <tr>
+
+
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    مجموع الفاتورة قبل الخصم
+
+                                                </td>
+                                                <td style="border: 1px solid;padding:3px ">
+                                                    <span style="margin-right:3px"
+                                                          t-esc="int(doc.total_before_discount)"/>
+
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+
+
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    مجموع الخصومات
+
+                                                </td>
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    <span style="margin-right:3px" t-esc="int(doc.all_discounts)"/>
+
+                                                </td>
+
+                                            </tr>
+
+
+                                            <tr>
+
+
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    صافي الفاتورة بعد الخصم
+
+                                                </td>
+                                                <td style="border: 1px solid ;padding:3px">
+                                                    <span style="margin-right:3px" t-esc="int(doc.amount_total)"/>
+
+                                                </td>
+
+                                            </tr>
+
+
+
+
+                                        </table>
+                                    </div>
+
+
+                                </div>
+
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </t>
+                </t>
+            </t>
+        </template>
+        <record id="dabbos_quotation_report_id" model="ir.actions.report">
+            <field name="name">Dabbos Order</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">dabbos_reports.dabbos_quotation_template_id</field>
+            <field name="report_file">dabbos_reports.dabbos_quotation_template_id</field>
+            <field name="print_report_name">'BI- %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <!--            <field name="paperformat"></field>-->
+
+        </record>
+
+
+        <record id="dabbos_quotation_report_id" model="ir.actions.report">
+            <field name="paperformat_id" ref="dabbos_reports.general_format_reports"/>
+        </record>
+    </data>
+</odoo>

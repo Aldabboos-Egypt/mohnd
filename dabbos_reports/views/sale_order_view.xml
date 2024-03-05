@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- > Copyright (c) 2021 Sayed Hassan (sh-odoo@hotmail.com)-->
+<!-- > License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)-->
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form.fixed.discount</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/form//label[@for='discount']" position="before">
+                <field name="fixed_discount"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/tree/field[@name='discount']" position="before">
+                <field name="fixed_discount"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree//field[@name='price_subtotal']" position="after">
+                <field name="gift"/>
+                <field name="notes"/>
+            </xpath>
+   <xpath expr="//field[@name='note']" position="replace">
+                   <field name="note" placeholder="Payment Notes" colspan="2" nolabel="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='tax_totals']" position="replace">
+
+
+
+<!--                        <field name="total_before_discount" style="align:ltr"/>-->
+                     <field name="total_before_discount" style="color: green; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+                     <field name="all_discounts" style="color: #e67e22; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+                     <field name="amount_total" style="color: green; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+
+
+
+                <!--                <field name="tax_totals"/>-->
+            </xpath>
+
+            <xpath expr="//field[@name='note']" position="after">
+
+                <field name="driver_id" domain="[('is_have_user', '=', True)]"/>
+                       <field name="total_product" style="color: #3498db; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+                     <field name="total_quantity" style="color: #3498db; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+                     <field name="total_quantity_packet" style="color: #3498db; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+                     <field name="total_quantity_carton" style="color: #3498db; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+
+
+
+                <!--                <field name="invoice_notes"/>-->
+<!--                                <field name="general_notes"/>-->
+
+
+            </xpath>
+
+
+
+
+        </field>
+    </record>
+</odoo>

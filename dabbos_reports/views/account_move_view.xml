@@ -1,0 +1,58 @@
+<!-- > Copyright (c) 2021 Sayed Hassan (sh-odoo@hotmail.com)-->
+<!-- > License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)-->
+<odoo>
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form.fixed.discount</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='discount']" position="before">
+                <field name="fixed_discount" optional="show"/>
+            </xpath>
+
+            <xpath expr="//field[@name='invoice_line_ids']/form/sheet/group/field[@name='discount']" position="before">
+                <field name="fixed_discount"/>
+            </xpath>
+
+            <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='price_subtotal']" position="after">
+                <field name="gift"/>
+                <field name="notes"/>
+            </xpath>
+
+
+            <xpath expr="//group[@colspan='8']" position="replace">
+                <group colspan="8">
+                    <field name="narration" placeholder="Payment Notes" colspan="2" nolabel="1"/>
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='tax_totals']" position="replace">
+                <field name="tax_totals" invisible="1"/>
+                <field name="total_before_discount" style="color: green; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+                <field name="all_discounts" style="color: #e67e22; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+<!--                <field name="amount_total"/>-->
+                <field name="amount_untaxed" style="color: green; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+                <field name="amount_tax" style="color: green; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>
+
+<!--                <field name="amount_residual" style="color: green; font-weight: bold; text-decoration: underline; font-family: 'clear-font';"/>-->
+
+            </xpath>
+            <xpath expr="//field[@name='narration']" position="after">
+                <group>
+                    <field name="driver_id" domain="[('is_have_user', '=', True)]"/>
+                    <field name="general_notes"/>
+                 <field name="total_product"/>
+                <field name="total_quantity"/>
+                <field name="total_quantity_packet"/>
+                <field name="total_quantity_carton"/>
+                    <field name="partner_balance_before"/>
+                    <field name="partner_balance_after"/>
+
+                </group>
+
+            </xpath>
+
+
+        </field>
+    </record>
+</odoo>
